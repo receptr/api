@@ -24,14 +24,17 @@
   @extend %icon;
   content: "\e600";
 }
+
 %icon-info-sign {
   @extend %icon;
   content: "\e602";
 }
+
 %icon-ok-sign {
   @extend %icon;
   content: "\e606";
 }
+
 %icon-search {
   @extend %icon;
   content: "\e607";
