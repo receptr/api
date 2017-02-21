@@ -2,8 +2,6 @@
 
 ## Adding a Device
 
-This is used to add a new device from the response in provisioning a new device.
-
 ```http
 PUT /v1/devices/148824 HTTP/1.1
 Host: textsecure-service-ca.whispersystems.org:80
@@ -40,3 +38,5 @@ Content-Length: 14
   "deviceId": 2
 }
 ```
+
+This is used to add a new device from the response in provisioning a new device.

@@ -28,9 +28,6 @@ Upgrade: WebSocket
 
 ## Provisioning
 
-This is the request used when you want to register a new device.
-Signal asks for your phone to scan a QR code, which then sends the response back to the app saying you've registered.
-
 ```http
 GET wss://textsecure-service-ca.whispersystems.org:80/v1/websocket/provisioning/?agent=OWD HTTP/1.1
 Host: textsecure-service-ca.whispersystems.org:80
@@ -54,3 +51,6 @@ Connection: Upgrade
 Sec-WebSocket-Accept: ZW5jcnlwdGVk==
 Upgrade: WebSocket
 ```
+
+This is the request used when you want to register a new device.
+Signal asks for your phone to scan a QR code, which then sends the response back to the app saying you've registered.

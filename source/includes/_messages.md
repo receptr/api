@@ -42,3 +42,5 @@ Date: Fri, 03 Feb 2017 02:08:02 GMT
   "needSync": false
 }
 ```
+
+Use this to send a message to someone.

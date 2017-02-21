@@ -49,9 +49,6 @@ Content-Length: 326
 
 ## Adding a Key
 
-Used to add a new key. With the `preKeys`, there are 100 objects that will need to be accounted for.
-Every one has an ID identifying where it is in the array.
-
 ```http
 PUT /v2/keys HTTP/1.1
 Host: textsecure-service-ca.whispersystems.org:80
@@ -101,3 +98,6 @@ Access-Control-Allow-Origin: chrome-extension://bikioccmkafdpakkkcpdbppfkghcmihk
 Access-Control-Allow-Credentials: true
 Access-Control-Expose-Headers:
 ```
+
+Used to add a new key. With the `preKeys`, there are 100 objects that will need to be accounted for.
+Every one has an ID identifying where it is in the array.
