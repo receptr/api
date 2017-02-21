@@ -130,9 +130,90 @@ Feel free to edit it and use it as a base for your own API&rsquo;s documentation
           <h1 id="accounts">Accounts</h1>
 <pre class="highlight http"><code></code></pre>
           <h1 id="attachments">Attachments</h1>
-<pre class="highlight shell"><code>curl <span class="s2">"/v1/attachments"</span>
-</code></pre>
+
+<h2 id="list-attachments">List Attachments</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/v1/attachments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">textsecure-service-ca.whispersystems.org:80</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">keep-alive</span>
+<span class="na">Cache-Control</span><span class="p">:</span> <span class="s">max-age=0</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Basic KzEyMzQ1Njc4OTAxLjE6YWJjZGVmZytISUpLTE1OT1BXUlNUVQ==</span>
+<span class="na">Upgrade-Insecure-Requests</span><span class="p">:</span> <span class="s">1</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span>
+<span class="na">Accept-Encoding</span><span class="p">:</span> <span class="s">gzip, deflate, sdch, br</span>
+<span class="na">Accept-Language</span><span class="p">:</span> <span class="s">en-US,en;q=0.8,fr;q=0.6</span>
+</code></pre><pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 21 Feb 2017 01:47:57 GMT</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">218</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">123456789</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"https://whispersystems-textsecure-attachments.s3.amazonaws.com/123456789?AWSAccessKeyId=123&amp;Expires=123&amp;Signature=ABC"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Not sure what this does, but it appears to provide a single attachment object.</p>
+
+<h2 id="show-an-attachment">Show an Attachment</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/v1/attachments/123456789</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">textsecure-service-ca.whispersystems.org:80</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">keep-alive</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Basic KzEyMzQ1Njc4OTAxLjE6YWJjZGVmZytISUpLTE1OT1BXUlNUVQ==</span>
+<span class="na">Upgrade-Insecure-Requests</span><span class="p">:</span> <span class="s">1</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span>
+<span class="na">Accept-Encoding</span><span class="p">:</span> <span class="s">gzip, deflate, sdch, br</span>
+<span class="na">Accept-Language</span><span class="p">:</span> <span class="s">en-US,en;q=0.8,fr;q=0.6</span>
+</code></pre><pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 21 Feb 2017 01:44:18 GMT</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">195</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"https://whispersystems-textsecure-attachments.s3.amazonaws.com/123456789?AWSAccessKeyId=123&amp;Expires=123&amp;Signature=ABC"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Provides a location to an AWS attachment.
+If you&rsquo;d like to view the attachment that is responded in the location field, make sure you set your <code class="prettyprint">Content-Type</code> to <code class="prettyprint">application/octet-stream</code>.</p>
+
           <h1 id="devices">Devices</h1>
+
+<h2 id="list-devices">List Devices</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/v1/devices</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">textsecure-service-ca.whispersystems.org:80</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">keep-alive</span>
+<span class="na">Cache-Control</span><span class="p">:</span> <span class="s">max-age=0</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Basic KzEyMzQ1Njc4OTAxLjE6YWJjZGVmZytISUpLTE1OT1BXUlNUVQ==</span>
+<span class="na">Upgrade-Insecure-Requests</span><span class="p">:</span> <span class="s">1</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span>
+<span class="na">Accept-Encoding</span><span class="p">:</span> <span class="s">gzip, deflate, sdch, br</span>
+<span class="na">Accept-Language</span><span class="p">:</span> <span class="s">en-US,en;q=0.8,fr;q=0.6</span>
+</code></pre><pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 21 Feb 2017 01:49:28 GMT</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">164</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="nt">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1487635200000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1468536627499</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chrome on Mac"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"lastSeen"</span><span class="p">:</span><span class="w"> </span><span class="mi">1487635200000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1487639050612</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Lists all of the devices that a user owns.
+The first one will most likely be the device that the user owns.
+The second one is their desktop application.</p>
 
 <h2 id="adding-a-device">Adding a Device</h2>
 <pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/v1/devices/148824</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
@@ -282,6 +363,44 @@ Feel free to edit it and use it as a base for your own API&rsquo;s documentation
 </code></pre>
 <p>Used to add a new key. With the <code class="prettyprint">preKeys</code>, there are 100 objects that will need to be accounted for.
 Every one has an ID identifying where it is in the array.</p>
+
+<h2 id="get-key-for-a-device">Get Key for a Device</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/v2/keys/+1234567890/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">textsecure-service-ca.whispersystems.org:80</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">keep-alive</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Basic KzEyMzQ1Njc4OTAxLjE6YWJjZGVmZytISUpLTE1OT1BXUlNUVQ==</span>
+<span class="na">Upgrade-Insecure-Requests</span><span class="p">:</span> <span class="s">1</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span>
+<span class="na">Accept-Encoding</span><span class="p">:</span> <span class="s">gzip, deflate, sdch, br</span>
+<span class="na">Accept-Language</span><span class="p">:</span> <span class="s">en-US,en;q=0.8,fr;q=0.6</span>
+</code></pre><pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 21 Feb 2017 01:55:26 GMT</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Encoding</span><span class="p">:</span> <span class="s">gzip</span>
+<span class="na">Vary</span><span class="p">:</span> <span class="s">Accept-Encoding</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">315</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="nt">"identityKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123/ABC"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"devices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"registrationId"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"signedPreKey"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"keyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC+123"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HELLO=="</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nt">"preKey"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"keyId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC+123"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Returns back some keys for the device specified. The first param is the phone number, then the device number.</p>
 
           <h1 id="messages">Messages</h1>
 
