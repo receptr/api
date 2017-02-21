@@ -284,6 +284,30 @@ Feel free to edit it and use it as a base for your own API&rsquo;s documentation
 Every one has an ID identifying where it is in the array.</p>
 
           <h1 id="messages">Messages</h1>
+
+<h2 id="list-messages">List Messages</h2>
+<pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">/v1/messages</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">textsecure-service-ca.whispersystems.org:80</span>
+<span class="na">Connection</span><span class="p">:</span> <span class="s">keep-alive</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Basic KzEyMzQ1Njc4OTAxLjE6YWJjZGVmZytISUpLTE1OT1BXUlNUVQ==</span>
+<span class="na">Upgrade-Insecure-Requests</span><span class="p">:</span> <span class="s">1</span>
+<span class="na">User-Agent</span><span class="p">:</span> <span class="s">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span>
+<span class="na">Accept-Encoding</span><span class="p">:</span> <span class="s">gzip, deflate, sdch, br</span>
+<span class="na">Accept-Language</span><span class="p">:</span> <span class="s">en-US,en;q=0.8,fr;q=0.6</span>
+</code></pre><pre class="highlight http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Date</span><span class="p">:</span> <span class="s">Tue, 21 Feb 2017 01:41:53 GMT</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Content-Length</span><span class="p">:</span> <span class="s">28</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="nt">"messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="nt">"more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This is a plausible route, yet I&rsquo;m not sure how it could be used.</p>
+
+<h2 id="send-a-message">Send a Message</h2>
 <pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/v1/messages/+16044408216</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">textsecure-service-ca.whispersystems.org:80</span>
 <span class="na">Connection</span><span class="p">:</span> <span class="s">keep-alive</span>
