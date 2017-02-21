@@ -135,8 +135,6 @@ Feel free to edit it and use it as a base for your own API&rsquo;s documentation
           <h1 id="devices">Devices</h1>
 
 <h2 id="adding-a-device">Adding a Device</h2>
-
-<p>This is used to add a new device from the response in provisioning a new device.</p>
 <pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/v1/devices/148824</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">textsecure-service-ca.whispersystems.org:80</span>
 <span class="na">Connection</span><span class="p">:</span> <span class="s">keep-alive</span>
@@ -169,6 +167,8 @@ Feel free to edit it and use it as a base for your own API&rsquo;s documentation
   </span><span class="nt">"deviceId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p>This is used to add a new device from the response in provisioning a new device.</p>
+
           <h1 id="keys">Keys</h1>
 
 <h2 id="get-a-key">Get a Key</h2>
@@ -213,9 +213,6 @@ Feel free to edit it and use it as a base for your own API&rsquo;s documentation
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h2 id="adding-a-key">Adding a Key</h2>
-
-<p>Used to add a new key. With the <code class="prettyprint">preKeys</code>, there are 100 objects that will need to be accounted for.
-Every one has an ID identifying where it is in the array.</p>
 <pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/v2/keys</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">textsecure-service-ca.whispersystems.org:80</span>
 <span class="na">Connection</span><span class="p">:</span> <span class="s">keep-alive</span>
@@ -261,6 +258,9 @@ Every one has an ID identifying where it is in the array.</p>
 <span class="na">Access-Control-Allow-Credentials</span><span class="p">:</span> <span class="s">true</span>
 <span class="s">Access-Control-Expose-Headers:</span>
 </code></pre>
+<p>Used to add a new key. With the <code class="prettyprint">preKeys</code>, there are 100 objects that will need to be accounted for.
+Every one has an ID identifying where it is in the array.</p>
+
           <h1 id="messages">Messages</h1>
 <pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">/v1/messages/+16044408216</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">textsecure-service-ca.whispersystems.org:80</span>
@@ -300,6 +300,8 @@ Every one has an ID identifying where it is in the array.</p>
   </span><span class="nt">"needSync"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p>Use this to send a message to someone.</p>
+
           <h1 id="websocket">Websocket</h1>
 
 <h2 id="login">Login</h2>
@@ -323,9 +325,6 @@ Every one has an ID identifying where it is in the array.</p>
 <span class="na">Upgrade</span><span class="p">:</span> <span class="s">WebSocket</span>
 </code></pre>
 <h2 id="provisioning">Provisioning</h2>
-
-<p>This is the request used when you want to register a new device.
-Signal asks for your phone to scan a QR code, which then sends the response back to the app saying you&rsquo;ve registered.</p>
 <pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">wss://textsecure-service-ca.whispersystems.org:80/v1/websocket/provisioning/?agent=OWD</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">textsecure-service-ca.whispersystems.org:80</span>
 <span class="na">Connection</span><span class="p">:</span> <span class="s">Upgrade</span>
@@ -345,6 +344,9 @@ Signal asks for your phone to scan a QR code, which then sends the response back
 <span class="na">Sec-WebSocket-Accept</span><span class="p">:</span> <span class="s">ZW5jcnlwdGVk==</span>
 <span class="na">Upgrade</span><span class="p">:</span> <span class="s">WebSocket</span>
 </code></pre>
+<p>This is the request used when you want to register a new device.
+Signal asks for your phone to scan a QR code, which then sends the response back to the app saying you&rsquo;ve registered.</p>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
