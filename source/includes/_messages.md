@@ -1,5 +1,35 @@
 # Messages
 
+## List Messages
+
+```http
+GET /v1/messages HTTP/1.1
+Host: textsecure-service-ca.whispersystems.org:80
+Connection: keep-alive
+Authorization: Basic KzEyMzQ1Njc4OTAxLjE6YWJjZGVmZytISUpLTE1OT1BXUlNUVQ==
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding: gzip, deflate, sdch, br
+Accept-Language: en-US,en;q=0.8,fr;q=0.6
+```
+
+```http
+HTTP/1.1 200 OK
+Date: Tue, 21 Feb 2017 01:41:53 GMT
+Content-Type: application/json
+Content-Length: 28
+
+{
+  "messages": [],
+  "more": false
+}
+```
+
+This is a plausible route, yet I'm not sure how it could be used.
+
+## Send a Message
+
 ```http
 PUT /v1/messages/+16044408216 HTTP/1.1
 Host: textsecure-service-ca.whispersystems.org:80
