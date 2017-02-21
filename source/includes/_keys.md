@@ -129,3 +129,47 @@ Access-Control-Expose-Headers:
 
 Used to add a new key. With the `preKeys`, there are 100 objects that will need to be accounted for.
 Every one has an ID identifying where it is in the array.
+
+## Get Key for a Device
+
+```http
+GET /v2/keys/+1234567890/1 HTTP/1.1
+Host: textsecure-service-ca.whispersystems.org:80
+Connection: keep-alive
+Authorization: Basic KzEyMzQ1Njc4OTAxLjE6YWJjZGVmZytISUpLTE1OT1BXUlNUVQ==
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding: gzip, deflate, sdch, br
+Accept-Language: en-US,en;q=0.8,fr;q=0.6
+```
+
+```http
+HTTP/1.1 200 OK
+Date: Tue, 21 Feb 2017 01:55:26 GMT
+Content-Type: application/json
+Content-Encoding: gzip
+Vary: Accept-Encoding
+Content-Length: 315
+
+{
+  "identityKey": "123/ABC",
+  "devices": [
+    {
+      "deviceId": 1,
+      "registrationId": 123,
+      "signedPreKey": {
+        "keyId": 1,
+        "publicKey": "ABC+123",
+        "signature": "HELLO=="
+      },
+      "preKey": {
+        "keyId": 1,
+        "publicKey": "ABC+123"
+      }
+    }
+  ]
+}
+```
+
+Returns back some keys for the device specified. The first param is the phone number, then the device number.
